@@ -610,7 +610,35 @@ footer{border-top:7px double #c8a24f!important;background:linear-gradient(180deg
 @keyframes secretFlash{0%,100%{opacity:1}50%{opacity:.25}}
 .secret-flash{animation:secretFlash .7s 3}
 @media(max-width:600px){#secretArchive{padding:12px}.secret-inner{padding:30px 22px}.secret-stamp{position:static;margin-left:auto;margin-bottom:10px}}
-\n</style>
+\n
+/* SITE EXPLORATION ARG / IMPERIAL INTERNAL NETWORK */
+#argStatus{position:fixed;left:18px;bottom:18px;z-index:35;font:8px/1.5 monospace;letter-spacing:.16em;color:#b18a43;background:rgba(20,12,10,.9);border:1px solid rgba(177,138,67,.4);padding:7px 10px;opacity:.42;cursor:pointer;transition:.25s}
+#argStatus:hover{opacity:1}
+#argToast{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:160;background:#17100f;color:#f1dfb0;border:1px solid #c8a24f;box-shadow:0 25px 90px #000;padding:25px 32px;max-width:560px;width:calc(100% - 30px);text-align:center;display:none}
+#argToast.open{display:block;animation:argIn .25s ease}
+#argToast b{display:block;color:#e2c77d;font-size:15px;letter-spacing:.2em;margin-bottom:10px}
+#argToast span{font-size:11px;color:#c8bba3}
+@keyframes argIn{from{opacity:0;transform:translate(-50%,-47%)}to{opacity:1;transform:translate(-50%,-50%)}}
+#internalNet{display:none;position:fixed;inset:0;z-index:150;background:radial-gradient(circle at 50% 0,#3a1a18,#090807 65%);color:#e9dcc0;overflow:auto;padding:35px}
+#internalNet.open{display:block}
+.internal-shell{max-width:1100px;margin:4vh auto;border:1px solid #9c793b;background:#11100e;box-shadow:0 0 0 8px rgba(177,138,67,.05),0 30px 100px #000;padding:38px;position:relative}
+.internal-shell:before{content:"";position:absolute;inset:12px;border:1px solid rgba(177,138,67,.22);pointer-events:none}
+.internal-head{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #5c4727;padding-bottom:20px}
+.internal-head h2{margin:0;color:#e1c77f;font-size:24px;letter-spacing:.18em;font-weight:500}
+.internal-code{font:9px monospace;color:#8d7957;letter-spacing:.15em;text-align:right}
+.internal-warning{margin:25px 0;padding:12px 16px;border-left:3px solid #8b2529;background:#211415;font-size:11px;color:#c8bba3}
+.internal-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#806532;margin:20px 0}
+.internal-tabs button{border:0;background:#1b1713;color:#c8bba3;padding:14px 8px;font:11px "Noto Serif JP";cursor:pointer}
+.internal-tabs button:hover,.internal-tabs button.active{background:#4b151a;color:#efd38a}
+.internal-doc{min-height:250px;border:1px solid #4e3d25;padding:25px;background:linear-gradient(135deg,#171411,#0f0e0c);font-size:12px;line-height:2}
+.internal-doc .red{color:#d28b8d}.internal-doc .gold{color:#e1c77f}
+.internal-close{margin-top:20px;border:1px solid #806532;background:#261116;color:#eadfc9;padding:9px 20px;cursor:pointer;font-family:inherit}
+.arg-puzzle{margin-top:25px;border-top:1px solid #493b27;padding-top:20px}
+.arg-puzzle input{background:#090807;border:1px solid #6b552f;color:#e1c77f;padding:10px;width:min(100%,420px);font-family:monospace}
+.arg-puzzle button{padding:10px 18px;background:#5b1018;color:#f6ead1;border:1px solid #c8a24f;cursor:pointer}
+#argProgress{font:9px monospace;color:#8d7957;margin-top:12px}
+@media(max-width:650px){#internalNet{padding:10px}.internal-shell{padding:25px 18px}.internal-head{display:block}.internal-code{text-align:left;margin-top:8px}.internal-tabs{grid-template-columns:1fr 1fr}.internal-doc{min-height:320px}}
+</style>
 </head>
 <body>
 <div class="palace-crest" aria-hidden="true">
@@ -722,5 +750,64 @@ function imperialClock(){const d=new Date();const h=String(d.getHours()).padStar
 <div id="secretSeal" title="帝室記録・非公開">菊</div><div id="konamiHint">ACCESS // 0000</div>
 <div id="secretArchive" aria-hidden="true"><div class="secret-inner"><div class="secret-stamp">甲種<br>秘</div><div class="secret-en">IMPERIAL HOUSEHOLD / RESTRICTED ARCHIVE</div><h2>帝室記録・特別指定文書</h2><div class="secret-doc">本記録は、一般公開資料網に表示されない宮内廳内部記録です。<br><br>皇統管理局・中央記録局の照合記録において、帝室行政に関する旧記録の一部には、公開系譜・官報その他の公的記録とは異なる記述が確認されています。<br><br>閲覧者は本記録の存在そのものを、所定の許可なく第三者へ伝達してはなりません。</div><div class="secret-note">【照合鍵】「物が語る故、物語。」――記録は、語られなかったことも保存する。</div><button class="secret-close" onclick="closeSecret()">記録を閉じる</button></div></div>
 <script>(function(){let n=0,last=0;document.getElementById('secretSeal').onclick=()=>{document.getElementById('secretArchive').classList.add('open');document.getElementById('secretArchive').setAttribute('aria-hidden','false')};window.closeSecret=()=>{document.getElementById('secretArchive').classList.remove('open');document.getElementById('secretArchive').setAttribute('aria-hidden','true')};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSecret();if(e.key==='g'||e.key==='G'){const t=Date.now();if(t-last>900)n=0;last=t;n++;if(n>=5){document.getElementById('secretSeal').classList.add('secret-flash');document.getElementById('secretArchive').classList.add('open');n=0}}});const crest=document.querySelector('.emblem');if(crest){let clicks=0;crest.addEventListener('click',()=>{clicks++;if(clicks===7){document.getElementById('secretSeal').classList.add('secret-flash');document.getElementById('konamiHint').textContent='ACCESS // 0710';clicks=0}})}})();</script>
+
+<div id="argStatus" title="帝室情報網・接続状態">ARCHIVE // 00%</div>
+<div id="argToast"><b id="argToastTitle">SYSTEM NOTICE</b><span id="argToastText"></span></div>
+<div id="internalNet" aria-hidden="true">
+ <div class="internal-shell">
+  <div class="internal-head"><div><div style="font:9px monospace;color:#8d7957;letter-spacing:.3em">IMPERIAL HOUSEHOLD / INTERNAL RECORD NETWORK</div><h2>帝室中央記録網</h2></div><div class="internal-code">NODE: CHUO-RECORDS<br>CLASS: INTERNAL<br>STATUS: RESTRICTED</div></div>
+  <div class="internal-warning">本網は帝國宮内廳職員用内部情報網です。公開情報網からの接続は想定されていません。記録の複寫・転載・口外を禁じます。</div>
+  <div class="internal-tabs">
+   <button onclick="argTab('genealogy',this)">皇統管理局</button><button onclick="argTab('rites',this)">祭祀局</button><button onclick="argTab('records',this)">中央記録局</button><button onclick="argTab('council',this)">御前会議</button>
+  </div>
+  <div id="internalDoc" class="internal-doc"></div>
+  <div class="arg-puzzle"><div style="font-size:10px;color:#8d7957;letter-spacing:.15em">照合番号 / RECORD CHECKSUM</div><p style="font-size:11px;color:#b9ac94">中央記録局に残る旧式照合鍵を入力してください。</p><input id="argInput" autocomplete="off" placeholder="ACCESS CODE"><button onclick="argUnlock()">照合</button><div id="argProgress">照合状態：未認証</div></div>
+  <button class="internal-close" onclick="closeInternal()">公開情報網へ戻る</button>
+ </div>
+</div>
+
+<script>
+(function(){
+ const toast=(title,msg)=>{document.getElementById('argToastTitle').textContent=title;document.getElementById('argToastText').textContent=msg;document.getElementById('argToast').classList.add('open');setTimeout(()=>document.getElementById('argToast').classList.remove('open'),3200)};
+ const status=document.getElementById('argStatus');
+ const set=(n)=>{localStorage.setItem('imperialARG',String(n));status.textContent='ARCHIVE // '+String(n).padStart(2,'0')+'%';};
+ const get=()=>Number(localStorage.getItem('imperialARG')||0);
+ window.openInternal=()=>{document.getElementById('internalNet').classList.add('open');document.getElementById('internalNet').setAttribute('aria-hidden','false');argTab('genealogy',document.querySelector('.internal-tabs button'))};
+ window.closeInternal=()=>{document.getElementById('internalNet').classList.remove('open');document.getElementById('internalNet').setAttribute('aria-hidden','true')};
+ window.argTab=(key,btn)=>{
+  document.querySelectorAll('.internal-tabs button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');
+  const d=document.getElementById('internalDoc');
+  const docs={
+   genealogy:'【皇統管理局／照合記録】<br><br>公開系譜：<span class="gold">現行皇統譜に基づく。</span><br>旧式台帳：一部記載が欠損。<br><br>照合担当記：<span class="red">「欠損は誤記ではない。意図的に空けられた欄がある。」</span><br><br>備考：欄外に「物が語る故、物語。」の記載あり。',
+   rites:'【祭祀局／旧儀式記録】<br><br>玲瓏106年以前の祭祀記録は中央記録局へ移管済。<br>公開目録に存在しない祭祀番号：<span class="gold">0710</span><br><br>担当者注：この番号について照会を受けた場合、<span class="red">「該当資料なし」</span>と回答すること。',
+   records:'【中央記録局／重要】<br><br>公開記録と旧記録の照合により、<span class="red">一件の不一致</span>を確認。<br><br>文書番号：H-G/04<br>保存区分：甲種特別指定<br>次回照合：認証鍵入力後に表示。',
+   council:'【御前会議／議事摘要】<br><br>記録の公開範囲について協議。<br><br>議事録末尾に手書きで残された一文：<span class="gold">「記録は、語られなかったことも保存する。」</span><br><br>※当該筆記の筆者は記録されていない。'
+  };d.innerHTML=docs[key]||docs.genealogy;
+ };
+ window.argUnlock=()=>{
+  const v=document.getElementById('argInput').value.trim().toUpperCase();
+  const p=document.getElementById('argProgress');
+  if(v==='0710'){set(Math.max(get(),50));p.innerHTML='<span style="color:#d6bc7b">照合成功：H-G/04 の閲覧権限を一時付与。</span><br><br>次の照合先：<a href="#archive" style="color:#e1c77f">帝室記録院・旧記録照合室</a>';toast('ACCESS GRANTED','中央記録局：甲種記録への一時接続を確認。');localStorage.setItem('argStage2','1')}
+  else if(v==='H-G/04'){set(Math.max(get(),75));p.innerHTML='<span style="color:#d6bc7b">照合成功：旧記録 H-G/04 を確認。</span><br><br>記録末尾：<b class="gold">「物が語る故、物語。」</b>';toast('RECORD VERIFIED','H-G/04 — 旧記録照合済。')}
+  else {p.textContent='照合状態：認証失敗';}
+ };
+ const q=document.getElementById('q');
+ const oldSearch=window.searchPerson;
+ window.searchPerson=function(){
+   const v=q.value.trim();
+   if(v==='玲瓏106'||v==='REI-106'){set(Math.max(get(),25));toast('HIDDEN RECORD FOUND','玲瓏106：公開目録には存在しない照合ログがあります。');return}
+   if(v==='物が語る故、物語。'){set(Math.max(get(),40));openInternal();return}
+   if(v==='H-G/04'){set(Math.max(get(),60));openInternal();argTab('records',document.querySelectorAll('.internal-tabs button')[2]);return}
+   oldSearch();
+ };
+ const copyright=document.querySelector('.copyright');
+ if(copyright){let n=0,t=0;copyright.addEventListener('click',()=>{const now=Date.now();if(now-t>1200)n=0;t=now;n++;if(n===7){set(Math.max(get(),15));toast('SYSTEM CHECK','帝室宮内廳・公開情報網：内部接続端末を検出。');}})}
+ const gate=document.querySelector('.palace-gate');
+ if(gate){let seq=[],last=0;gate.addEventListener('click',e=>{const now=Date.now();if(now-last>1800)seq=[];last=now;const txt=(e.target.innerText||'').trim();if(txt.includes('御前会議'))seq.push('3');else if(txt.includes('帝國宮城'))seq.push('1');else if(txt.includes('皇統'))seq.push('8');else return;if(seq.join('')==='318'){set(Math.max(get(),30));toast('ARCHIVE ROUTE FOUND','旧式内部網への接続経路を検出。');openInternal();seq=[]}})}
+ if(location.hash==='#imperial-archives'){set(Math.max(get(),20));openInternal()}
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeInternal();document.getElementById('argToast').classList.remove('open')}})
+ set(get());
+})();
+</script>
 </body>
 </html>
