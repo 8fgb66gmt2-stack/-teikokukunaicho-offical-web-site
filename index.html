@@ -886,6 +886,46 @@ function imperialClock(){const d=new Date();const h=String(d.getHours()).padStar
    }
  });
 
+
+ // ===== ARG FINAL: easy-to-notice epilogue =====
+ const argFinal=document.createElement('div');
+ argFinal.id='argFinal';
+ argFinal.innerHTML=`
+ <div class="arg-final-box">
+   <div class="arg-final-kicker">IMPERIAL HOUSEHOLD / ARCHIVE</div>
+   <div class="arg-final-title">閲覧権限：最上級</div>
+   <div class="arg-final-rule"></div>
+   <p>旧記録 H-G/04 の照合が完了しました。</p>
+   <p class="arg-final-note">公開記録から消された三つの欄は、削除されたのではない。</p>
+   <p>誰かが、未来の閲覧者へ残すために、空白として保存したのである。</p>
+   <div class="arg-final-document">
+     <small>記録末尾　／　筆録者不詳</small>
+     <strong>「記録は、語られなかったことも保存する。」</strong>
+   </div>
+   <p class="arg-final-hint">――これ以上の記録は、現在の公開情報網には存在しません。</p>
+   <button onclick="document.getElementById('argFinal').classList.remove('open')">記録を閉じる</button>
+ </div>`;
+ document.body.appendChild(argFinal);
+ const finalStyle=document.createElement('style');
+ finalStyle.textContent=`
+ #argFinal{position:fixed;inset:0;background:rgba(7,5,5,.94);z-index:100001;display:none;align-items:center;justify-content:center;padding:20px;color:#e8dcc2;font-family:serif}
+ #argFinal.open{display:flex}.arg-final-box{width:min(700px,94vw);border:1px solid #9b7b38;background:linear-gradient(145deg,#18110f,#090808);padding:34px;box-shadow:0 0 80px #000;text-align:center}
+ .arg-final-kicker{font:10px monospace;letter-spacing:.2em;color:#8e784d}.arg-final-title{font-size:28px;margin:12px 0;color:#e6d19a}.arg-final-rule{height:1px;background:#67522d;margin:20px 0 28px}
+ .arg-final-box p{line-height:2;font-size:14px}.arg-final-note{color:#c8ad70}.arg-final-document{margin:25px 0;padding:20px;border:1px solid #493b27;background:#0b0a09}.arg-final-document small{display:block;color:#77664c;margin-bottom:15px}.arg-final-document strong{display:block;font-size:18px;color:#e5cd91;line-height:1.8}.arg-final-hint{font-size:11px!important;color:#786b58}.arg-final-box button{margin-top:10px;padding:9px 25px;background:transparent;border:1px solid #806634;color:#d7bf82;cursor:pointer}
+ `;
+ document.head.appendChild(finalStyle);
+ function checkArgCompletion(){
+   if(Number(localStorage.getItem('imperialARG')||0)>=100 && !sessionStorage.getItem('argFinalSeen')){
+     sessionStorage.setItem('argFinalSeen','1');
+     setTimeout(()=>document.getElementById('argFinal').classList.add('open'),700);
+   }
+ }
+ const oldSet=window.set;
+ if(typeof oldSet==='function'){
+   window.set=function(v){oldSet(v);if(v>=100)checkArgCompletion()};
+ }
+ checkArgCompletion();
+
  set(get());
 })();
 </script>
