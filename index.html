@@ -94,7 +94,24 @@ footer:after{content:"菊　　菊　　菊";position:absolute;right:5%;top:38px
 .palace-crest{position:fixed;right:28px;bottom:28px;width:74px;height:74px;border:1px solid rgba(177,138,67,.5);border-radius:50%;z-index:18;background:rgba(250,245,231,.82);backdrop-filter:blur(4px);box-shadow:0 6px 25px rgba(40,20,5,.16);display:grid;place-items:center;color:#8d6b31}
 .palace-crest .crest-ring{position:absolute;inset:8px;border:1px solid #b18a43;border-radius:50%}.palace-crest span{font-size:8px;letter-spacing:.25em;position:relative}.crest-petal{position:absolute;width:19px;height:28px;border:1px solid #b18a43;border-radius:50% 50% 42% 42%;transform-origin:50% 37%;background:rgba(214,188,123,.08)}.p1{transform:rotate(0deg) translateY(-14px)}.p2{transform:rotate(72deg) translateY(-14px)}.p3{transform:rotate(144deg) translateY(-14px)}.p4{transform:rotate(216deg) translateY(-14px)}.p5{transform:rotate(288deg) translateY(-14px)}
 .palace-lights{position:fixed;inset:0;pointer-events:none;z-index:17;overflow:hidden}.palace-lights i{position:absolute;width:2px;height:2px;background:#f0d58b;border-radius:50%;opacity:.7;animation:floatImperial 8s infinite ease-in-out}.palace-lights i:nth-child(1){left:12%;top:28%}.palace-lights i:nth-child(2){left:81%;top:22%;animation-delay:1s}.palace-lights i:nth-child(3){left:66%;top:70%;animation-delay:2.2s}.palace-lights i:nth-child(4){left:24%;top:78%;animation-delay:3.4s}.palace-lights i:nth-child(5){left:50%;top:15%;animation-delay:4.5s}@keyframes floatImperial{0%,100%{transform:translateY(0) scale(1);opacity:.25}50%{transform:translateY(-16px) scale(1.8);opacity:.85}}
-.hero-crownline{font-size:9px;color:#b18a43;letter-spacing:.48em;margin-bottom:16px;border-bottom:1px solid rgba(177,138,67,.35);padding-bottom:10px;display:inline-block}</style>
+.hero-crownline{font-size:9px;color:#b18a43;letter-spacing:.48em;margin-bottom:16px;border-bottom:1px solid rgba(177,138,67,.35);padding-bottom:10px;display:inline-block}
+/* IMPERIAL PALACE / 500X LUXURY EXPANSION */
+:root{--obsidian:#0b0908;--imperial:#4b0b13;--verm:#74151d;--champagne:#ead39a}
+.palace-gate{background:linear-gradient(180deg,#120d0c,#24110f 45%,#4b0b13);color:#f5ead1;border-bottom:8px double var(--gold);position:relative;overflow:hidden}
+.palace-gate:before{content:"";position:absolute;inset:22px;border:1px solid rgba(234,211,154,.5);box-shadow:inset 0 0 0 8px rgba(234,211,154,.035),inset 0 0 0 9px rgba(234,211,154,.16)}
+.gate-in{max-width:1440px;margin:auto;min-height:270px;padding:65px 70px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:35px;position:relative}
+.gate-copy small{font:9px Arial;letter-spacing:.45em;color:var(--gold3)}.gate-copy h2{font-size:29px;font-weight:400;letter-spacing:.3em;margin:12px 0}.gate-copy p{font-size:11px;color:#c9bda9;margin:0}
+.gate-seal{width:145px;height:145px;border:1px solid var(--champagne);outline:1px solid rgba(234,211,154,.3);outline-offset:8px;border-radius:50%;display:grid;place-items:center;font-size:76px;color:var(--champagne);background:radial-gradient(circle,rgba(234,211,154,.11),transparent 68%);box-shadow:0 0 60px rgba(234,211,154,.12)}
+.gate-list{text-align:right;font-size:10px;letter-spacing:.18em;line-height:2.3;color:#cdbf9f}.gate-list b{display:block;color:#f0d58b;font-weight:400}
+.imperial-dashboard{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;margin:0 0 75px}
+.dashboard-main,.dashboard-side{background:linear-gradient(145deg,#fffdf8,#eee1c6);border:1px solid #bda56f;box-shadow:0 18px 45px rgba(49,30,8,.13);position:relative;overflow:hidden}
+.dashboard-main{padding:34px}.dashboard-main:before{content:"帝室中樞";position:absolute;right:-15px;top:-42px;font-size:150px;color:rgba(177,138,67,.055);writing-mode:vertical-rl}
+.dashboard-title{font-size:23px;color:var(--wine);letter-spacing:.2em;margin:0 0 20px}.dashboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#c7b58f}.dashboard-grid a{background:#fffaf0;padding:20px 15px;min-height:105px;transition:.2s}.dashboard-grid a:hover{background:#f3e5c8;transform:translateY(-2px)}.dashboard-grid b{display:block;font-size:14px;color:var(--wine);font-weight:500}.dashboard-grid small{display:block;font:8px Arial;color:#9a7a3f;letter-spacing:.13em;margin:5px 0}.dashboard-grid span{font-size:10px;color:#756b5b}
+.dashboard-side{padding:28px}.dashboard-side h4{margin:0 0 15px;color:var(--wine);font-size:17px;font-weight:500;letter-spacing:.15em}.clock{font:27px Georgia,serif;color:#8b6a32;letter-spacing:.12em;border-bottom:1px solid #cdbb94;padding-bottom:12px}.status{display:flex;justify-content:space-between;border-bottom:1px dotted #cdbb94;padding:9px 0;font-size:10px}.status strong{color:var(--wine);font-weight:400}
+.genealogy{background:#160f0d;color:#eadfc9;border:1px solid var(--gold);padding:55px 45px;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(24,15,8,.25)}.genealogy:before{content:"皇　統";position:absolute;right:-20px;top:-55px;font-size:190px;color:rgba(240,213,139,.045);writing-mode:vertical-rl}.genealogy-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #715b35;padding-bottom:18px;margin-bottom:25px}.genealogy h3{margin:0;font-size:27px;font-weight:400;letter-spacing:.2em}.genealogy small{font:9px Arial;color:#b18a43;letter-spacing:.2em}.lineage{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:center}.lineage .node{border:1px solid #735d36;background:rgba(255,255,255,.025);padding:18px 10px;text-align:center;min-height:95px;position:relative}.lineage .node:after{content:"◆";position:absolute;right:-13px;top:39%;color:#b18a43;font-size:9px}.lineage .node:last-child:after{display:none}.lineage b{display:block;color:#ead39a;font-weight:400;font-size:14px}.lineage span{font-size:9px;color:#a99b83}.lineage .current{background:linear-gradient(145deg,#4b0b13,#24100e);border-color:#d0b46d;box-shadow:0 0 25px rgba(177,138,67,.12)}
+.royal-scroll{margin-top:20px;border-top:1px solid #715b35;padding-top:16px;color:#b9aa90;font-size:10px;letter-spacing:.08em}
+@media(max-width:850px){.gate-in{grid-template-columns:1fr;text-align:center;padding:55px 30px}.gate-list{text-align:center}.gate-seal{margin:auto}.imperial-dashboard{grid-template-columns:1fr}.dashboard-grid{grid-template-columns:1fr 1fr}.lineage{grid-template-columns:1fr}.lineage .node:after{content:"▼";right:48%;top:auto;bottom:-16px}.lineage .node:last-child:after{display:none}}
+</style>
 </head>
 <body>
 <div class="palace-crest" aria-hidden="true">
@@ -115,10 +132,27 @@ footer:after{content:"菊　　菊　　菊";position:absolute;right:5%;top:38px
 </div></nav>
 </header>
 <section class="hero"><div class="hero-in"><div><div class="hero-crownline">御　前　会　議　｜　帝　室　中　樞　｜　帝　國　宮　城</div><div class="hero-kicker">IMPERIAL GOVERNMENT / IMPERIAL HOUSEHOLD</div><h2>帝室を護り、<br><em>玲瓏たる宮廷</em>を<br>次代へ。</h2><p>帝國宮内廳は、日ノ本帝國における皇室行政の中樞として、皇統の記録、宮中祭祀、皇族の御活動、行幸啓、宮廷文化その他帝室に関する事務を掌理します。</p></div><div class="seal-panel"><div class="seal-big">菊</div><strong>帝 國 宮 内 廳</strong><small>IMPERIAL HOUSEHOLD AGENCY OF HINOMOTO</small><div style="margin-top:18px;color:#b18a43;font-size:11px;letter-spacing:.2em">✦　✧　✦</div></div></div></section>
-<div class="ribbon"><div class="ribbon-in"><div class="date">玲瓏106年<br>帝都</div><marquee scrollamount="3">【宮内廳告示】皇太子殿下 御日程更新　　◆　宮中祭祀執行予定　　◆　帝室記録公開目録更新　　◆　皇室関係者を騙る不正照会に御注意ください</marquee><div class="date">OFFICIAL<br>PORTAL</div></div></div>
+
+<section class="palace-gate">
+<div class="gate-in">
+<div class="gate-copy"><small>THE INNER PALACE / IMPERIAL HOUSEHOLD</small><h2>帝國宮城・内廷中樞</h2><p>皇室行政の最奥部。ここより先は、帝室の記録と宮務の中枢へ。</p></div>
+<div class="gate-seal">菊</div>
+<div class="gate-list"><b>御　前　会　議</b>皇統　｜　祭祀　｜　宮務　｜　記録<br>帝室財産　｜　宮廷文化　｜　警衛</div>
+</div></section><div class="ribbon"><div class="ribbon-in"><div class="date">玲瓏106年<br>帝都</div><marquee scrollamount="3">【宮内廳告示】皇太子殿下 御日程更新　　◆　宮中祭祀執行予定　　◆　帝室記録公開目録更新　　◆　皇室関係者を騙る不正照会に御注意ください</marquee><div class="date">OFFICIAL<br>PORTAL</div></div></div>
 <main>
 <div class="ornament">◆　❖　◆</div>
-<section id="notice" class="section"><div class="section-head"><span class="section-no">01</span><h3>官報・公告</h3><small>OFFICIAL NOTICES / IMPERIAL HOUSEHOLD BULLETIN</small></div><div class="notice">
+
+<section class="section">
+<div class="genealogy"><div class="genealogy-head"><h3>帝室皇統・公開系譜</h3><small>IMPERIAL LINEAGE / PUBLIC RECORD</small></div>
+<div class="lineage">
+<div class="node"><b>桜宮 陽仁</b><span>玲瓏帝・現帝</span></div>
+<div class="node"><b>薄氷宮 幸仁</b><span>皇太子・冬</span></div>
+<div class="node current"><b>花葉 雛菊</b><span>春・現人神</span></div>
+<div class="node"><b>宮廷記録</b><span>皇統管理局照合</span></div>
+<div class="node"><b>次代へ</b><span>帝室記録院保存</span></div>
+</div>
+<div class="royal-scroll">※ 本画面は公開記録に基づく簡略系譜です。詳細な皇統譜は皇統管理局所管資料として管理されています。</div>
+</div></section><section id="notice" class="section"><div class="section-head"><span class="section-no">01</span><h3>官報・公告</h3><small>OFFICIAL NOTICES / IMPERIAL HOUSEHOLD BULLETIN</small></div><div class="notice">
 <div class="notice-row"><div class="notice-date">玲瓏106.10.08</div><div class="tag">皇室</div><div class="notice-text"><a href="#imperial">皇太子殿下の御日程について　—　公務日程を更新しました。</a></div></div>
 <div class="notice-row"><div class="notice-date">玲瓏106.10.06</div><div class="tag">祭祀</div><div class="notice-text"><a href="#rites">宮中祭祀に伴う参内・拝礼等について</a></div></div>
 <div class="notice-row"><div class="notice-date">玲瓏106.10.01</div><div class="tag">人事</div><div class="notice-text"><a href="#org">帝國宮内廳幹部職員の人事異動について</a></div></div>
@@ -172,5 +206,7 @@ const people={桜宮陽仁:"玲瓏帝・日ノ本帝國皇帝｜皇室関係公�
 function searchPerson(){const q=document.getElementById('q').value.trim();const r=document.getElementById('result');if(!q){r.textContent="氏名を入力してください。";return}const hit=Object.keys(people).find(k=>k.includes(q)||q.includes(k));r.textContent=hit?"◆ 該当記録："+hit+"　｜　"+people[hit]:"該当する公開人物記録はありません。";}
 function restricted(e){e.preventDefault();const x=document.getElementById('restricted');x.style.display='block';x.scrollIntoView({behavior:'smooth',block:'center'});}
 </script>
-</body>
+<script>
+function imperialClock(){const d=new Date();const h=String(d.getHours()).padStart(2,'0'),m=String(d.getMinutes()).padStart(2,'0'),s=String(d.getSeconds()).padStart(2,'0');const x=document.getElementById('imperialClock');if(x)x.textContent='玲瓏106年　'+h+'：'+m+'：'+s;}setInterval(imperialClock,1000);imperialClock();
+</script></body>
 </html>
