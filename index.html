@@ -545,6 +545,50 @@ footer:before,footer:after{display:none!important}
 @media(max-width:850px){.mast{grid-template-columns:1fr auto!important}.ministry{display:none!important}.brand{text-align:left!important}.brand h1{font-size:29px!important}.nav{grid-template-columns:repeat(2,1fr)!important}.hero,.hero-in{min-height:590px!important}.hero-in{grid-template-columns:1fr!important;padding:60px 28px!important}.hero h2{font-size:39px!important}.seal-panel{width:220px!important;min-height:220px!important;justify-self:start!important;border-left:0!important;border-top:1px solid rgba(215,190,130,.4)!important;padding-top:25px!important}.seal-big{font-size:100px!important}.intro,.dual,.cards,.org{grid-template-columns:1fr!important}.people{grid-template-columns:repeat(2,1fr)!important}.section-head{display:block!important}.section-head small{display:block!important;margin-top:4px!important}#imperial-government-network>div:last-child{grid-template-columns:1fr 1fr!important}}
 @media(max-width:500px){.people{grid-template-columns:1fr!important}#imperial-government-network>div:last-child{grid-template-columns:1fr!important}}
 
+/* IMPERIAL COURT LUXURY PASS */
+:root{--court-gold:#c8a24f;--court-light:#ead28d;--court-red:#64131b}
+body{background:#eee3cb!important}
+body:before{opacity:.055!important;background-image:radial-gradient(#7b5a24 .65px,transparent .8px)!important;background-size:6px 6px!important}
+body:after{inset:5px!important;border:2px solid rgba(200,162,79,.52)!important;box-shadow:inset 0 0 0 5px rgba(200,162,79,.09),inset 0 0 0 7px rgba(200,162,79,.22)!important}
+header{background:linear-gradient(180deg,#fffdf8,#f1e5cc)!important;border-bottom:5px double var(--court-gold)!important}
+.mast{min-height:245px!important;padding:45px 35px 30px!important}
+.mast:after{left:5%!important;right:5%!important;bottom:10px!important;height:2px!important;background:linear-gradient(90deg,transparent,#a67c31 18%,#ead28d 50%,#a67c31 82%,transparent)!important}
+.brand:before{content:"皇 室 行 政　｜　宮 中 典 礼　｜　帝 室 文 化"!important;color:#98732e!important;font-size:9px!important;letter-spacing:.42em!important}
+.brand h1{font-size:62px!important;letter-spacing:.46em!important;color:#201515!important;text-shadow:0 2px #fff,0 0 25px rgba(200,162,79,.22)!important}
+.brand p{font-size:10px!important;letter-spacing:.38em!important}
+.emblem{width:118px!important;height:118px!important;border:3px double var(--court-gold)!important;outline:1px solid #e5c879!important;outline-offset:7px!important;background:radial-gradient(circle,#fffdf7,#eadabd)!important;box-shadow:0 0 0 14px rgba(200,162,79,.06),0 0 45px rgba(120,80,15,.22)!important}
+nav{background:linear-gradient(180deg,#741c25,#3e0c12)!important;border-top:2px solid var(--court-light)!important;border-bottom:8px double var(--court-light)!important}
+nav .nav:before,nav .nav:after{content:"❖"!important;color:#e5c879!important;display:flex!important;align-items:center;justify-content:center!important}
+nav a{padding:17px 5px!important;color:#fff1d5!important;border-color:rgba(225,195,120,.35)!important;letter-spacing:.17em!important}
+.hero{min-height:760px!important;background:radial-gradient(circle at 78% 42%,rgba(225,196,111,.18),transparent 19%),radial-gradient(circle at 50% 110%,rgba(115,18,28,.7),transparent 46%),linear-gradient(135deg,#090707,#211214 48%,#5b1018)!important;border-bottom:10px double var(--court-gold)!important}
+.hero:before{inset:27px!important;border:1px solid rgba(234,210,141,.82)!important;box-shadow:inset 0 0 0 9px rgba(234,210,141,.04),inset 0 0 0 10px rgba(234,210,141,.2),0 0 70px rgba(0,0,0,.4)!important}
+.hero:after{content:"帝　室　宮　内　廳"!important;font-size:185px!important;letter-spacing:.48em!important;color:rgba(234,210,141,.035)!important}
+.hero-in{min-height:760px!important;padding:110px 105px!important;grid-template-columns:1.08fr .92fr!important}
+.hero-in:before,.hero-in:after{top:75px!important;bottom:75px!important;background:linear-gradient(transparent,#e4c777,transparent)!important}
+.hero h2{font-size:78px!important;letter-spacing:.25em!important;text-shadow:0 5px 30px rgba(0,0,0,.55)!important}
+.hero h2 em{color:#ead28d!important}
+.seal-panel{width:410px!important;min-height:410px!important;border:1px solid rgba(234,210,141,.78)!important;outline:1px solid rgba(234,210,141,.32)!important;outline-offset:13px!important;background:radial-gradient(circle,rgba(200,162,79,.14),rgba(0,0,0,.28))!important;box-shadow:0 0 50px rgba(0,0,0,.28),inset 0 0 45px rgba(200,162,79,.08)!important}
+.seal-panel:before{content:"皇 室 御 紋　｜　IMPERIAL CREST"!important;color:#e4c777!important;letter-spacing:.38em!important}
+.seal-big{font-size:190px!important;color:#e6c875!important;text-shadow:0 0 30px rgba(234,210,141,.32)!important}
+.ribbon{border-top:1px solid var(--court-gold)!important;border-bottom:2px solid #b39251!important;background:linear-gradient(#fffaf0,#eadfc9)!important}
+.ornament{font-size:32px!important;color:#a67c31!important;text-shadow:0 0 15px rgba(200,162,79,.45)!important}
+.section:before{height:2px!important;background:linear-gradient(90deg,transparent,#c8a24f 20%,#ead28d 50%,#c8a24f 80%,transparent)!important}
+.section-head h3{font-size:32px!important}
+.section-head h3:before{width:9px!important;height:9px!important;border:2px solid #c8a24f!important}
+.notice{border:1px solid #bda36f!important;border-top:5px solid var(--court-red)!important;box-shadow:0 18px 50px rgba(62,35,8,.14)!important}
+.notice:before,.notice:after{width:31px!important;height:31px!important;border-color:#c8a24f!important}
+.card{min-height:245px!important;border:1px solid #bda36f!important;background:linear-gradient(145deg,#fffdf8,#f0e3c8)!important;box-shadow:0 12px 30px rgba(61,39,10,.11)!important}
+.card:before{inset:8px!important;border:1px solid rgba(200,162,79,.38)!important}
+.card h4{font-size:25px!important;color:#63131b!important}
+.person{min-height:245px!important;background:linear-gradient(145deg,#fffdf8,#eadcc1)!important;border:1px solid #bda36f!important;box-shadow:0 13px 32px rgba(61,39,10,.12)!important}
+.person .mark{width:48px!important;height:48px!important;border:2px solid #c8a24f!important;box-shadow:0 0 0 4px rgba(200,162,79,.08)!important}
+.panel{background:linear-gradient(145deg,#fffdf8,#f0e4cc)!important;border:1px solid #bda36f!important;box-shadow:0 12px 30px rgba(61,39,10,.1)!important}
+.org{box-shadow:0 15px 35px rgba(61,39,10,.14)!important}
+.archive{min-height:330px!important;border:2px solid #b18a43!important;box-shadow:inset 0 0 0 8px #14100e,inset 0 0 0 10px #80652f,0 22px 55px rgba(24,18,10,.3)!important}
+#imperial-government-network{border-top:4px solid #64131b!important;background:linear-gradient(145deg,#fffdf8,#eadfc9)!important;box-shadow:0 15px 40px rgba(61,39,10,.12)!important}
+#imperial-government-network a{border-color:#c4a86d!important;background:linear-gradient(145deg,#fffdf8,#f0e4cc)!important;box-shadow:inset 0 0 0 4px rgba(200,162,79,.045)!important}
+footer{border-top:7px double #c8a24f!important;background:linear-gradient(180deg,#160c0d,#090707)!important}
+@media(max-width:850px){.brand h1{font-size:42px!important}.mast{min-height:205px!important}.hero,.hero-in{min-height:630px!important}.hero-in{padding:75px 35px!important}.hero h2{font-size:49px!important}.seal-panel{width:300px!important;min-height:300px!important}.seal-big{font-size:140px!important}}
 </style>
 </head>
 <body>
