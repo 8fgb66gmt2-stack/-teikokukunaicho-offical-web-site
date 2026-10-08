@@ -806,6 +806,86 @@ function imperialClock(){const d=new Date();const h=String(d.getHours()).padStar
  if(gate){let seq=[],last=0;gate.addEventListener('click',e=>{const now=Date.now();if(now-last>1800)seq=[];last=now;const txt=(e.target.innerText||'').trim();if(txt.includes('御前会議'))seq.push('3');else if(txt.includes('帝國宮城'))seq.push('1');else if(txt.includes('皇統'))seq.push('8');else return;if(seq.join('')==='318'){set(Math.max(get(),30));toast('ARCHIVE ROUTE FOUND','旧式内部網への接続経路を検出。');openInternal();seq=[]}})}
  if(location.hash==='#imperial-archives'){set(Math.max(get(),20));openInternal()}
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeInternal();document.getElementById('argToast').classList.remove('open')}})
+
+ // ===== ARG STAGE 3 : 旧記録照合室 =====
+ const argOld=document.createElement('div');
+ argOld.id='argOldRecord';
+ argOld.innerHTML=`
+ <div class="old-record-box">
+   <div class="old-record-head"><span>帝室記録院</span><b>甲種特別指定</b></div>
+   <div class="old-record-title">旧記録照合室　／　H-G/04</div>
+   <div class="old-record-meta">DOCUMENT H-G/04　・　VERIFICATION ROOM　・　RESTRICTED</div>
+   <div class="old-record-body">
+     <p>公開系譜と旧台帳の間に、<span class="red">三箇所の欠損</span>を確認。</p>
+     <p>欠損は誤記ではない。<b>誰かが、意図的に空けた欄である。</b></p>
+     <div class="redacted-line">皇統記録　第■■■■号　／　■■■■■■■■</div>
+     <div class="redacted-line">奉告記録　■■■■　／　■■■■■■■■■■</div>
+     <div class="redacted-line">筆録者　　■■■■■■　／　照合不能</div>
+     <p class="old-hint">この記録を読むには、公開情報網に残された「三つの印」を探せ。</p>
+     <div id="sealClues"></div>
+     <div id="oldResult" class="old-result">照合状態：<span>未完了</span></div>
+   </div>
+   <button class="old-close" onclick="document.getElementById('argOldRecord').classList.remove('open')">閉じる</button>
+ </div>`;
+ document.body.appendChild(argOld);
+ const oldStyle=document.createElement('style');
+ oldStyle.textContent=`
+ #argOldRecord{position:fixed;inset:0;background:rgba(8,5,5,.96);z-index:100000;display:none;align-items:center;justify-content:center;padding:22px;color:#eadfc8;font-family:serif}
+ #argOldRecord.open{display:flex}.old-record-box{width:min(820px,94vw);max-height:90vh;overflow:auto;border:1px solid #9b7b38;box-shadow:0 0 70px #000;background:linear-gradient(135deg,#17100f,#090808);padding:0 0 22px}
+ .old-record-head{display:flex;justify-content:space-between;padding:12px 18px;border-bottom:1px solid #604b27;color:#cdb77a;font-size:12px;letter-spacing:.18em}
+ .old-record-title{font-size:27px;padding:25px 24px 7px;color:#f0e3c2}.old-record-meta{padding:0 24px 20px;color:#806d50;font:10px monospace;letter-spacing:.16em}
+ .old-record-body{border-top:1px solid #3f3220;padding:24px;line-height:2;font-size:14px}.redacted-line{background:#050505;color:#050505;margin:10px 0;padding:6px 10px;user-select:none}.redacted-line:hover{color:#7e6b52}
+ .old-hint{color:#bca875;margin-top:25px}.old-result{margin-top:22px;padding:14px;border:1px solid #473a25;color:#8d7b5b}.old-result span{color:#bca875}
+ #sealClues{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.seal{border:1px solid #4d3d25;padding:13px;text-align:center;color:#6f6048;cursor:pointer}.seal.found{border-color:#a88b4d;color:#e0ca91;background:rgba(150,110,40,.08)}.seal b{display:block;font-size:18px;margin-bottom:5px}
+ .old-close{margin:0 24px;background:transparent;color:#bca875;border:1px solid #69542f;padding:8px 20px;cursor:pointer}
+ @media(max-width:600px){#sealClues{grid-template-columns:1fr}.old-record-title{font-size:21px}}
+ `;
+ document.head.appendChild(oldStyle);
+ const seals=[
+   {id:'sealA',name:'第一の印',key:'KIKU',label:'御印の記録',count:0},
+   {id:'sealB',name:'第二の印',key:'REI',label:'玲瓏の記録',count:0},
+   {id:'sealC',name:'第三の印',key:'SPRING',label:'春季の記録',count:0}
+ ];
+ function renderSeals(){
+   const box=document.getElementById('sealClues'); if(!box)return;
+   box.innerHTML=seals.map(s=>`<div class="seal ${localStorage.getItem('argSeal_'+s.key)?'found':''}" data-seal="${s.key}"><b>◈</b>${s.name}<small><br>${localStorage.getItem('argSeal_'+s.key)?'照合済':'未発見'}</small></div>`).join('');
+ }
+ function findSeal(key){
+   localStorage.setItem('argSeal_'+key,'1'); renderSeals();
+   const found=seals.filter(s=>localStorage.getItem('argSeal_'+s.key)).length;
+   document.getElementById('oldResult').innerHTML='照合状態：<span>'+found+' / 3　印を確認</span>';
+   if(found===3){
+     set(Math.max(get(),100));
+     document.getElementById('oldResult').innerHTML='<span style="color:#d8bf7c">照合完了：H-G/04 の欠損欄を復元。</span><br><br><b class="gold">「欠けた記録こそ、記録である。」</b><br><small>公開情報網に戻ると、新しい記録が表示されます。</small>';
+     toast('ARCHIVE COMPLETE','H-G/04 — 旧記録の照合が完了しました。');
+     document.body.classList.add('arg-complete');
+   }
+ }
+ function openOldRecord(){renderSeals();document.getElementById('argOldRecord').classList.add('open')}
+ document.getElementById('argOldRecord').addEventListener('click',e=>{const s=e.target.closest('.seal');if(s)findSeal(s.dataset.seal)});
+ const oldUnlock=window.argUnlock;
+ window.argUnlock=function(){
+   oldUnlock();
+   const v=document.getElementById('argInput').value.trim().toUpperCase();
+   if(v==='H-G/04' || localStorage.getItem('argStage2')==='1'){set(Math.max(get(),75));setTimeout(openOldRecord,180)}
+ };
+ // Site-wide exploration triggers: three different public records leave three different seals.
+ const allText=[...document.querySelectorAll('body *')];
+ let aClicks=0,bClicks=0,cClicks=0,ta=0,tb=0,tc=0;
+ allText.forEach(el=>{
+   if(el.children.length) return;
+   const t=(el.textContent||'').trim();
+   if(t.includes('帝國宮内廳') || t.includes('日 ノ 本 帝 國')){
+     el.addEventListener('click',()=>{const n=Date.now();if(n-ta>1500)aClicks=0;ta=n;if(++aClicks===3){findSeal('KIKU');toast('SEAL FOUND','第一の印：御印の記録を検出。');aClicks=0}});
+   }
+   if(t.includes('帝室記録') || t.includes('特別指定文書')){
+     el.addEventListener('click',()=>{const n=Date.now();if(n-tb>1500)bClicks=0;tb=n;if(++bClicks===2){findSeal('REI');toast('SEAL FOUND','第二の印：玲瓏の記録を検出。');bClicks=0}});
+   }
+   if(t.includes('祭祀') || t.includes('皇室行事') || t.includes('儀式')){
+     el.addEventListener('click',()=>{const n=Date.now();if(n-tc>1500)cClicks=0;tc=n;if(++cClicks===4){findSeal('SPRING');toast('SEAL FOUND','第三の印：春季の記録を検出。');cClicks=0}});
+   }
+ });
+
  set(get());
 })();
 </script>
